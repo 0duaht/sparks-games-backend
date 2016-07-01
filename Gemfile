@@ -1,11 +1,13 @@
 source "https://rubygems.org"
 
 gem "rails", "4.2.5"
-gem "rails-api"
+gem "rails-api", require: 'rails-api/action_controller/api'
 gem "spring", group: :development
 gem "sqlite3"
 gem "bcrypt"
 gem "jwt"
+gem "figaro"
+gem "omniauth-google-oauth2"
 gem "validates_email_format_of"
 gem "simple_command"
 gem "factory_girl_rails", "~> 4.0"
