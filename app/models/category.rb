@@ -1,8 +1,8 @@
 class Category < ActiveRecord::Base
   has_many :votes
-  validates :title, :description, :imageUrl, presence: true
+  validates :title, :short_description, :imageUrl, presence: true
 
-  def as_json
-    super(only: [:title, :short_description, :long_description, :imageUrl])
+  def as_json(options={})
+    super(only: [:title, :short_description, :imageUrl])
   end
 end

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def logout
     current_user.update api_token: nil
-    render json: { "message": "Logged out successfully." }
+    render json: { message: "Logged out successfully." }
   end
 
   private

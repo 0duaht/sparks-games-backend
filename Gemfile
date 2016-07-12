@@ -11,6 +11,7 @@ gem "validates_email_format_of"
 gem "simple_command"
 gem "faker"
 gem "factory_girl_rails", "~> 4.0"
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development do
   gem "pry"
