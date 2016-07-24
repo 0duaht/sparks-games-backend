@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
   def matches_andela_email
     email =~ /[.\w]+@andela.co[m]?\z/
   end
+
+  def self.pluck_to_hash(keys)
+    pluck(*keys).map{|column_value| Hash[keys.zip(column_value)]}
+  end
 end
