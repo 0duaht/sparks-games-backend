@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
   def matches_andela_email
     email =~ /[.\w]+@andela.co[m]?\z/
   end
+
+  def as_json(options={})
+    super(only: [:name, :email])
+  end
 end
