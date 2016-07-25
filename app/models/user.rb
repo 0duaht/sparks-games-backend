@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
     email =~ /[.\w]+@andela.co[m]?\z/
   end
 
-  def self.pluck_to_hash(keys)
-    pluck(*keys).map{|column_value| Hash[keys.zip(column_value)]}
+  def as_json(options={})
+    super(only: [:name, :email])
   end
 end
