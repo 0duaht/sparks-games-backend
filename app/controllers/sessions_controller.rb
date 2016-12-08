@@ -6,6 +6,10 @@ class SessionsController < ApplicationController
     respond_with_command auth_command
   end
 
+  def failure
+    redirect_to ENV["FRONT_END_PATH"]
+  end
+
   def logout
     current_user.update api_token: nil
     render json: { message: "Logged out successfully." }
