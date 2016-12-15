@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
     if request_auth.success?
       @current_user = request_auth.result
     else
-      render json: request_auth.errors, status: :unauthorized
+      render json: {errors: request_auth.errors}, status: :unauthorized
     end
   end
 end

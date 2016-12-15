@@ -11,7 +11,7 @@ module RailsApiStarter
 
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
-        origins ['localhost:8080', 'andela-awards.herokuapp.com']
+        origins ['localhost:5000', 'andela-awards.herokuapp.com']
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
