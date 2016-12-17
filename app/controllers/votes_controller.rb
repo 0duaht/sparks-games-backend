@@ -6,6 +6,10 @@ class VotesController < ApplicationController
     # render json: vote
   end
 
+  def index
+    render json: {votes: Vote.top_votes}, status: :ok
+  end
+
   def create
     begin
       vote_params[:selectedCategories].each do |category_id, email|

@@ -10,10 +10,11 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     email_address = auth.info.email
-    user = where("email LIKE :email", email: email_address).first_or_create do |u|
-      u.name = auth.info.name
-      u.email = auth.info.email
-    end
+    user = where("email LIKE :email", email: email_address).first_or_initialize
+    user.name = auth.info.name
+    user.email = auth.info.email
+    user.avatar_url = auth.info.image
+    user.save
 
     return user if user.valid? && user.matches_andela_email
   end
@@ -23,6 +24,12 @@ class User < ActiveRecord::Base
   end
 
   def as_json(options={})
-    super(only: [:name, :email])
+    super(only: [:name, :email, :avatar_url])
+  end
+
+  def self.hash_by_email
+    result = {}
+    self.all.each { |user| result[user.email] = user }
+    result
   end
 end
